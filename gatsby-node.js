@@ -21,6 +21,18 @@ exports.createPages = ({ actions, graphql }) => {
           }
         }
       }
+      aboutYaml {
+        en {
+          templateKey
+          path
+        }
+        pt {
+          path
+        }
+        fr {
+          path
+        }
+      }
     }
   `).then((result) => {
     if (result.errors) {
@@ -45,29 +57,22 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    // Tag pages:
-    let tags = []
-    // Iterate through each post, putting all found tags into `tags`
-    posts.forEach((edge) => {
-      if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
-      }
-    })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
+    const locales = ["en", "pt", "fr"];
+    const nodes = [result.data.aboutYaml];
+    nodes.forEach((node) => {
+      console.log("\n\nnodeEEE\n\n");
+      console.log(node);
+      locales.forEach((locale) => {
+        createPage({
+          path: `${locale}${node[locale].path}`,
+          component: path.resolve(`src/templates/${String(node.en.templateKey)}.js`),
+          context: {
+            locale,
+          },
+        });
+      });
+    });
 
-    // Make tag pages
-    tags.forEach((tag) => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
-
-      createPage({
-        path: tagPath,
-        component: path.resolve(`src/templates/tags.js`),
-        context: {
-          tag,
-        },
-      })
-    })
   })
 }
 

@@ -32,15 +32,15 @@ AboutPageTemplate.propTypes = {
   contentComponent: PropTypes.func,
 };
 
-const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data;
+const AboutPage = ({ data, pageContext }) => {
+  const { title, content } = data.allAboutYaml.nodes[0][pageContext.locale];
 
   return (
     <Layout>
       <AboutPageTemplate
         contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
+        title={title}
+        content={content}
       />
     </Layout>
   );
@@ -53,11 +53,21 @@ AboutPage.propTypes = {
 export default AboutPage;
 
 export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      html
-      frontmatter {
-        title
+  query AboutPage {
+    allAboutYaml {
+      nodes {
+        en {
+          title
+          content
+        }
+        pt {
+          title
+          content
+        }
+        fr {
+          title
+          content
+        }
       }
     }
   }
