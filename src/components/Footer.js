@@ -1,12 +1,18 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
+import LanguageSwitcher from "./LanguageSwitch";
+import { useLocale } from './context/LocaleContext';
+import { NAVIGATION_LINKS } from "./navigation/content";
+
 import logo from "../img/logo-white.svg";
 import facebook from "../img/social/facebook.svg";
 import instagram from "../img/social/instagram.svg";
 
 const Footer = () => {
-  
+  const { locale } = useLocale();
+  const content = NAVIGATION_LINKS[locale];
+
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered has-background-black has-text-white-ter">
@@ -25,18 +31,18 @@ const Footer = () => {
               <section className="menu">
                   <ul className="menu-list">
                     <li>
-                      <Link to="/" className="navbar-item">
-                        Home
+                      <Link className="navbar-item" to={content.home.link}>
+                        {content.home.label}
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/about">
-                        About
+                      <Link className="navbar-item" to={content.about.link}>
+                        {content.about.label}
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
+                      <Link className="navbar-item" to={content.products.link}>
+                        {content.products.label}
                       </Link>
                     </li>
                   </ul>
@@ -46,13 +52,13 @@ const Footer = () => {
                 <section>
                   <ul className="menu-list">
                     <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
+                      <Link className="navbar-item" to={content.blog.link}>
+                        {content.blog.label}
                       </Link>
                     </li>
                     <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
+                      <Link className="navbar-item" to={content.contact.link}>
+                        {content.contact.label}
                       </Link>
                     </li>
                     <li>
@@ -83,6 +89,7 @@ const Footer = () => {
                     style={{ width: "1em", height: "1em" }}
                   />
                 </a>
+                <LanguageSwitcher />
               </div>
             </div>
           </div>

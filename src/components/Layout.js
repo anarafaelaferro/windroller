@@ -2,6 +2,7 @@ import * as React from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import {LocaleProvider} from "../components/context/LocaleContext";
 import "../style/bulma-style.scss";
 import "../style/custom-style.scss";
 import useSiteMetadata from "./SiteMetadata";
@@ -49,9 +50,11 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      <Navbar />
-      <div>{children}</div>
-      <Footer />
+      <LocaleProvider>
+        <Navbar />
+        <div>{children}</div>
+        <Footer />
+      </LocaleProvider>
     </div>
   );
 };

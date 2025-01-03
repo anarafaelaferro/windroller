@@ -3,11 +3,16 @@ import { Link } from "gatsby";
 import logo from "../img/logo.svg";
 import facebook from "../img/social/facebook.svg";
 import instagram from "../img/social/instagram.svg";
+import { useLocale } from './context/LocaleContext';
+import { NAVIGATION_LINKS } from "./navigation/content";
 
 import "./Navbar.scss";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
+
+  const { locale } = useLocale();
+  const content = NAVIGATION_LINKS[locale];
 
   return (
     <nav
@@ -17,7 +22,7 @@ const Navbar = () => {
     >
       <div className="container">
         <div className="navbar-brand">
-          <Link to="/" className="navbar-item" title="Logo">
+          <Link to={content.home.link} className="navbar-item" title="Logo">
             <img src={logo} alt="Kaldi" style={{ width: "88px" }} />
           </Link>
           {/* Hamburger menu */}
@@ -43,23 +48,23 @@ const Navbar = () => {
                 re-write that makes this unneccesary.
              */}
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/about">
-              About
+            <Link className="navbar-item" to={content.about.link}>
+              {content.about.label}
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/products">
-              Products
+            <Link className="navbar-item" to={content.products.link}>
+              {content.products.label}
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/blog">
-              Blog
+            <Link className="navbar-item" to={content.blog.link}>
+            {content.blog.label}
             </Link>
           </li>
           <li className="navbar-item" style={{ padding: "0px" }}>
-            <Link className="navbar-item" to="/contact">
-              Contact
+            <Link className="navbar-item" to={content.contact.link}>
+            {content.contact.label}
             </Link>
           </li>
           <li className="navbar-item navbar-end has-text-centered">
