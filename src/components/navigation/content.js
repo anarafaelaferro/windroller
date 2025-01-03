@@ -11,7 +11,7 @@ export const NAVIGATION_LINKS = {
     about: { label: "Sobre", link: "/pt/sobre" },
     products: { label: "Produtos", link: "/products" },
     blog: { label: "Últimas Histórias", link: "/blog" },
-    contact: { label: "Contato", link: "/contact" },
+    contact: { label: "Contacto", link: "/contact" },
   },
   fr: {
     home: { label: "Home", link: "/" },
