@@ -1,8 +1,8 @@
 ---
 templateKey: index-page
-title: Windroller
+title: Windroller Landsailing
 image: /img/highlight-winderoller-6.jpg
-heading: Windroller
+heading: Windroller Landsailing
 subheading: Powered by nature
 mainpitch:
   title: Why Windroller?
