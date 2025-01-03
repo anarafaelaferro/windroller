@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import Content, { HTMLContent } from "../components/Content";
+import { HTMLContent } from "../components/Content";
 
 // eslint-disable-next-line
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content;
+  const PageContent = contentComponent || HTMLContent;
 
   return (
     <section className="section section--gradient">
