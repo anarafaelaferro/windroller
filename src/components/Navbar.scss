@@ -1,0 +1,19 @@
+.navbar-icon {
+  margin: 0 10px;
+}
+
+.navbar {
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+
+  .navbar-brand img {
+    min-height: 45px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    .navbar-brand img {
+      min-height: 60px;
+    }
+  }
+
+}

@@ -10,7 +10,7 @@ module.exports = {
       resolve: "gatsby-plugin-sass",
       options: {
         sassOptions: {
-          indentedSyntax: true,
+          indentedSyntax: false,
         },
       },
     },
@@ -73,7 +73,7 @@ module.exports = {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
         develop: true, // Activates purging in npm run develop
-        purgeOnly: ['/bulma-style.sass'], // applies purging only on the bulma css file
+        purgeOnly: ['/bulma-style.scss'], // applies purging only on the bulma css file
         printRejected: true,
       },
     }, // must be after other CSS plugins

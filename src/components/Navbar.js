@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
-import github from "../img/github-icon.svg";
 import logo from "../img/logo.svg";
+import facebook from "../img/social/facebook.svg";
+import instagram from "../img/social/instagram.svg";
+
+import "./Navbar.scss";
 
 const Navbar = () => {
   const [isActive, setIsActive] = useState(false);
@@ -59,15 +62,25 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
-          <li className="navbar-end has-text-centered">
+          <li className="navbar-item navbar-end has-text-centered">
             <a
-              className="navbar-item"
-              href="https://github.com/decaporg/gatsby-plugin-decap-cms"
+              className="navbar-icon"
+              href="https://www.facebook.com/windroller/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <span className="icon">
-                <img src={github} alt="Github" />
+                <img src={facebook} alt="Facebook" />
+              </span>
+            </a>
+            <a
+              className="navbar-icon"
+              href="https://www.instagram.com/windroller_landsailing/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="icon">
+                <img src={instagram} alt="Instagram" />
               </span>
             </a>
           </li>
